@@ -1,5 +1,6 @@
 import React ,{ Component }from 'react';
 import { Card,CardImg,CardImgOverlay,CardText,CardBody,CardTitle } from 'reactstrap';
+import  Dishdetail  from './DishdetailComponent';
 
 class Menu extends Component{
     constructor(props){
@@ -12,17 +13,43 @@ class Menu extends Component{
     onDishSelect(dish){
         this.setState({selectedDish:dish});
     }
+    renderComments(dish)
+    {
+        if(dish!=null){
+            const comments=dish.comments.map((singlecomment)=>{
+                return(
+                     <div key={singlecomment.id}  >
+                         <ul className="list-unstyled">
+                         <li> {singlecomment.comment}</li>
+                         <li>--{singlecomment.author},{singlecomment.date}</li>
+                         </ul>
+                         
+                     </div>
+                ); 
+             });
 
+             return(
+                <div className="container">
+                    <div className="row"><h4>Comments</h4></div>
+                    <div>{comments}</div>
+                    
+                </div>
+               
+                
+            );
+        }else{
+            return(
+                <div></div>
+            );
+        }
+       
+       
+    }
+    
     renderDish(dish){
         if(dish!=null){
             return(
-             <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name}/>
-                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-              </Card>
+             <Dishdetail dish={dish}/>
             );
 
         }else{
@@ -44,13 +71,20 @@ class Menu extends Component{
                 </div>
             );
         });
+        
         return(
           <div className="container">
               <div className="row">
                  {menu} 
               </div>
               <div className="row">
-                 {this.renderDish(this.state.selectedDish)}
+                 <div className="col-12 col-md-5 m-1">
+                     {this.renderDish(this.state.selectedDish)}
+                  </div>
+                  <div className="col-12 col-md-5 m-1">
+                     {this.renderComments(this.state.selectedDish)}
+                  </div>
+                  
               </div>
           </div>
         
