@@ -1,1 +1,3 @@
 [1010/164541.701:ERROR:settings.cc(430)] Settings version is not 5
+[1017/152259.389:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\GHALI\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\7e0f3f48-e828-4e03-9b33-c4ef473f8fc6: Le chemin d’accès spécifié est introuvable. (0x3)
+[1017/152259.421:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
